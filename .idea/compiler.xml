@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="my-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="guave-demo" target="1.8" />
+      <module name="logback-demo" target="1.8" />
+      <module name="my-demo" target="1.8" />
+      <module name="my-demo-parent" target="1.8" />
+      <module name="mybatisplus-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
