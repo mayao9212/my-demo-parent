@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.function.Supplier;
+
 /**
  * function ：用户示例
  * @author ：mayao {yao.ma@shenmajr.com}
@@ -12,20 +14,25 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User  {
 
-    private int id;
+    private int index;
 
     private String userName;
-
-    private String email;
 
     private int age;
 
     private String sex;
 
-    public User(int age, String sex) {
+    public User(String userName, int age, String sex) {
+        this.userName = userName;
         this.age = age;
         this.sex = sex;
+    }
+
+    public User(int index, String userName, int age) {
+        this.index = index;
+        this.userName = userName;
+        this.age = age;
     }
 }
