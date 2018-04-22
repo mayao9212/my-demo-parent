@@ -113,7 +113,8 @@ public class StreamPlusInActionTest {
         List<User> users = Arrays.asList(user0,user1,user2,user3,user4);
         //想通过用户名+性别分组
         Map<String,Map<String,List<User>>> userMap = users.stream().
-                collect(Collectors.groupingBy(User::getUserName,Collectors.groupingBy(User::getSex)));
+                collect(Collectors.groupingBy(User::getUserName
+                        ,Collectors.groupingBy(User::getSex)));
 
         println("分组后的大小："+ userMap.size());
 
