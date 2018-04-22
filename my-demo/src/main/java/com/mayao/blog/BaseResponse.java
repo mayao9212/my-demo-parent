@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * function ：
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao
  * @date ：2018/4/14
  */
 @AllArgsConstructor

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * function ：用户接口
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao 
  * @date ：2018/4/14
  */
 public interface IUserService {

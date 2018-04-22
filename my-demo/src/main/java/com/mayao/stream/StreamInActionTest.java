@@ -1,6 +1,5 @@
 package com.mayao.stream;
 
-import com.google.common.collect.Lists;
 import com.mayao.blog.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * function ：异常全局统一处理
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao 
  * @date ：2018/4/14
  */
 @Slf4j

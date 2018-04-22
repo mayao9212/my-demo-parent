@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * function ：返回码枚举类
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao 
  * @date ：2018/4/14
  */
 @Getter

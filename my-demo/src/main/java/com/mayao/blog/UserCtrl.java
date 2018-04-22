@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * function ：用户控制器
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao 
  * @date ：2018/4/14
  */
 @RestController

@@ -15,7 +15,7 @@ import static java.lang.System.out;
 
 /**
  * function ：Stream 的进阶用法
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao
  * @date ：2018/4/22
  */
 public class StreamPlusInActionTest {
