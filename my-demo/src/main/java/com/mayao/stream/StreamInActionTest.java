@@ -38,7 +38,30 @@ public class StreamInActionTest {
         User user8 = new User("用户20",40,MAN);
         User user9 = new User("用户21",100,WOMAN);
         userList = Arrays.asList(user0,user1,user2,user3,user4,user5,user6,user7,user8,user9);
-        out.println(userList);
+//        out.println(userList);
+    }
+
+    @Test
+    public void test(){
+
+        User user0 = new User("用户1",30,MAN);
+        User user1 = new User("用户2",17,WOMAN);
+        User user2 = new User("用户3",100,MAN);
+        User user3 = new User("用户4",39,WOMAN);
+
+        List<User> users = Arrays.asList(user0,user1,user2,user3);
+
+        List<Integer> ages = Arrays.asList(30,17);
+
+        users = users.stream()
+                .filter(c->!ages.contains(c.getAge()))
+                .collect(Collectors.toList());
+        println(users);
+
+        users.forEach(c->{
+            println(c);
+        });
+
     }
 
 

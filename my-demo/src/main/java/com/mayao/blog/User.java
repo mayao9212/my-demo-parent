@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.function.Supplier;
-
 /**
  * function ：用户示例
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao 
  * @date ：2018/4/14
  */
 @Data

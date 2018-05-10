@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 
 /**
  * function ：
- * @author ：mayao {yao.ma@shenmajr.com}
+ * @author ：mayao
  * @date ：2018/4/22
  */
 public class UserSuppiler implements Supplier<User> {

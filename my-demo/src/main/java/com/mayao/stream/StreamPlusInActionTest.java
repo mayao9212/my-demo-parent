@@ -1,5 +1,6 @@
 package com.mayao.stream;
 
+import com.google.common.collect.Lists;
 import com.mayao.blog.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +43,7 @@ public class StreamPlusInActionTest {
 
     /**
      * Integer
+     * 需要limit限定大小
      */
     @Test
     public void integeSupplier(){
@@ -60,6 +62,7 @@ public class StreamPlusInActionTest {
 
     /**
      * 自己生成流
+     *  需要limit限定大小
      */
     @Test
     public void userSupplier(){
@@ -106,29 +109,41 @@ public class StreamPlusInActionTest {
     public void groupByTest2(){
 
         User user0 = new User("用户一组",30,MAN);
-        User user1 = new User("用户二组",17,MAN);
+        User user1 = new User("用户二组",17,WOMAN);
         User user4 = new User("用户二组",19,MAN);
         User user2 = new User("用户三组",56,WOMAN);
-        User user3 = new User("用户三组",39,WOMAN);
-        List<User> users = Arrays.asList(user0,user1,user2,user3,user4);
+        User user3 = new User("用户三组",39,MAN);
+        User user5 = new User("用户三组",65,MAN);
+        List<User> users = Arrays.asList(user0,user1,user2,user3,user4,user5);
+        println("分组用户原始数据："+users);
+        users = users.stream()
+                .sorted(Comparator.comparing(User::getAge))
+                .collect(Collectors.toList());
+        println("年龄排序后数据："+users);
+
         //想通过用户名+性别分组
         Map<String,Map<String,List<User>>> userMap = users.stream().
                 collect(Collectors.groupingBy(User::getUserName
                         ,Collectors.groupingBy(User::getSex)));
 
         println("分组后的大小："+ userMap.size());
+        println("分组后的数据："+userMap);
 
         userMap.forEach((k,v)->{
+            println("---------------------------");
             println("当前组：" + k);
             v.forEach((k1,v1)->{
                 println("里面一层key：" + k1);
                 println("里面一层value：" + v1);
             });
         });
+
+        /**
+         * 分组后，原有集合的顺序会被打乱。
+         *  会根据集合对象里面的第一个字段做自然排序，不是之前想要的排序；；
+         */
+
     }
-
-
-
 
     /**
      * 某个属性有条件的分类，也很有用
@@ -150,8 +165,5 @@ public class StreamPlusInActionTest {
 //        是否成年：true 用户集合大小：2
 
     }
-
-
-
 
 }
