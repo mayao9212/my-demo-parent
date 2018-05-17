@@ -1,6 +1,5 @@
 package com.mayao.jdk.thread;
 
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CountDownLatch;
@@ -17,7 +16,7 @@ public class WorkerManage {
 
     private CountDownLatch countDownLatch;
 
-    private static final int NUMBER_OF_TASKS = 5;
+    private static final int NUMBER_OF_TASKS = 8;
 
     public WorkerManage(){
         this.countDownLatch = new CountDownLatch(NUMBER_OF_TASKS);
@@ -42,13 +41,26 @@ public class WorkerManage {
      * 结束工作
      */
     public void finishWork(){
+//        synchronized (this.countDownLatch){
+//            try {
+//                System.out.println("线程开始等待。。");
+//                this.countDownLatch.wait();
+//                System.out.println("所有线程完成。。");
+//            }catch (Exception e){
+//                log.error("结束工作异常",e);
+//            }
+//        }
+
+        //是await()方法,不是wait()方法
+
         try {
             System.out.println("线程开始等待。。");
-            this.countDownLatch.wait();
+            this.countDownLatch.await();
             System.out.println("所有线程完成。。");
         }catch (Exception e){
             log.error("结束工作异常",e);
         }
+
     }
 
     public static void main(String[] args) {
