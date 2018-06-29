@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/flink/flink.iml" filepath="$PROJECT_DIR$/flink/flink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module-test/module-test.iml" filepath="$PROJECT_DIR$/module-test/module-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/my-demo/my-demo.iml" filepath="$PROJECT_DIR$/my-demo/my-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/my-demo-parent.iml" filepath="$PROJECT_DIR$/my-demo-parent.iml" />
     </modules>

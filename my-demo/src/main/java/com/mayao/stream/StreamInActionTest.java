@@ -42,6 +42,12 @@ public class StreamInActionTest {
     }
 
     @Test
+    public void strAppend(){
+        String str = userList.stream().map(User::getUserName).collect(Collectors.joining(",")).toString();
+        println(str);
+    }
+
+    @Test
     public void test(){
 
         User user0 = new User("用户1",30,MAN);

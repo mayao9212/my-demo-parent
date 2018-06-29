@@ -126,7 +126,7 @@ public class ListTest {
         linkedList.add("A");
         linkedList.add("B");
         linkedList.add("C");
-        print(linkedList);
+        print(linkedList.toString());
 
     }
 

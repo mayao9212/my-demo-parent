@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="flink" />
+        <module name="module-test" />
         <module name="my-demo" />
       </profile>
     </annotationProcessing>
@@ -14,6 +15,7 @@
       <module name="flink" target="1.8" />
       <module name="guave-demo" target="1.8" />
       <module name="logback-demo" target="1.8" />
+      <module name="module-test" target="1.8" />
       <module name="my-demo" target="1.8" />
       <module name="my-demo-parent" target="1.8" />
       <module name="mybatisplus-demo" target="1.8" />
