@@ -1,4 +1,4 @@
-package com.mayao.jdk.thread;
+package com.mayao.jdk.thread.latch;
 
 /**
  * function ：

@@ -1,4 +1,4 @@
-package com.mayao.jdk.thread;
+package com.mayao.jdk.thread.latch;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

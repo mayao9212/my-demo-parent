@@ -42,6 +42,12 @@ public class StreamInActionTest {
     }
 
     @Test
+    public void testCount(){
+        long count = userList.stream().mapToInt(User::getAge).sum();
+        println(count);
+    }
+
+    @Test
     public void strAppend(){
         String str = userList.stream().map(User::getUserName).collect(Collectors.joining(",")).toString();
         println(str);

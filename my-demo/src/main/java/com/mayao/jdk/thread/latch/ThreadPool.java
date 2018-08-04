@@ -1,4 +1,4 @@
-package com.mayao.jdk.thread;
+package com.mayao.jdk.thread.latch;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
