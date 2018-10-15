@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * function ：用户示例
  * @author ：mayao 
@@ -21,6 +23,24 @@ public class User  {
     private int age;
 
     private String sex;
+
+    /**
+     * 注册人
+     */
+    private String createUser;
+    /**
+     * 注册时间
+     */
+    private Date createTime;
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
+    /**
+     * 更新人
+     */
+    private String updateUser;
+
 
     public User(String userName, int age, String sex) {
         this.userName = userName;
