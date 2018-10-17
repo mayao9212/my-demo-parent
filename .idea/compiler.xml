@@ -9,6 +9,7 @@
         <module name="flink" />
         <module name="module-test" />
         <module name="my-demo" />
+        <module name="my-springmvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -18,6 +19,7 @@
       <module name="module-test" target="1.8" />
       <module name="my-demo" target="1.8" />
       <module name="my-demo-parent" target="1.8" />
+      <module name="my-springmvc" target="1.8" />
       <module name="mybatisplus-demo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
