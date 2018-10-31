@@ -7,6 +7,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 
 import java.text.DateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -41,6 +42,27 @@ public class DateTest {
         log.info("date5:{}",date4.toString(SIMPLE));
 
     }
+
+    @Test
+    public void localDateTest(){
+
+        Date date = LocalDate.now().toDate();
+        log.info(date.toString());
+
+    }
+
+    @Test
+    public void isToday(){
+
+        Date date = new Date();
+        DateTime dateTime = new DateTime(date);
+        LocalDate fromDate = dateTime.toLocalDate();
+        log.info(fromDate.toDate().toString());
+        log.info(""+LocalDate.now().toDate().compareTo(fromDate.toDate()));
+
+
+    }
+
 
 
 }

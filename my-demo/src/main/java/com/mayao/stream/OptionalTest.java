@@ -46,12 +46,22 @@ public class OptionalTest {
     @Test
     public void ofNullTest() throws Exception{
         Optional<User> optional = userList.stream()
-                .filter(c->90==c.getAge())
+                .filter(c->100==c.getAge())
                 .findAny();
 
         optional.orElseThrow(()->new Exception("空指针"));
 
         System.out.println(optional);
-        Optional.ofNullable(optional.get()).orElseThrow(()->new Exception("空指针"));
+//        User user = Optional.ofNullable(optional.get()).orElseThrow(()->new Exception("空指针"));
+
+//        System.out.println(user);
+
+        User user1 = optional.orElseThrow(()->new Exception("空指针"));
+        System.out.println(user1);
+
+
+
+
+
     }
 }
