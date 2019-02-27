@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <<script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+
+        //这里不是http。。
+        var wsPath='localhost:8080';
+        // var wsPath='172.23.4.162:19999/silentInstaller';
+
+
+        var websocket;
+        if ('WebSocket' in window) {
+            websocket = new WebSocket("ws://" + wsPath + "/ws");
+        } else if ('MozWebSocket' in window) {
+            websocket = new MozWebSocket("ws://" + wsPath + "/ws");
+        } else {
+            websocket = new SockJS("http://" + wsPath + "/ws/sockjs");
+        }
+        websocket.onopen = function(event) {
+            console.log("WebSocket:已连接");
+            console.log(event);
+        };
+        websocket.onmessage = function(event) {
+            var data=JSON.parse(event.data);
+            console.log("WebSocket:收到一条消息",data);
+        };
+        websocket.onerror = function(event) {
+            console.log("WebSocket:发生错误 ");
+            console.log(event);
+        };
+        websocket.onclose = function(event) {
+            console.log("WebSocket:已关闭");
+            console.log(event);
+        };
+
+
+        //这里本地方便测试，使用的get
+        function broadcast(){
+            var httpPath='http://localhost:8080/';
+            // var httpPath='http://172.23.4.162:19999/silentInstaller';
+            $.ajax({
+                url:httpPath + 'manage/installer/start',
+                type:"get",
+                // type:"post",
+                // data:{text:$("#msg").val()},
+                // dataType:"json",
+                success:function(data){
+                    console.log("发送成功");
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<input type="button" value="测试安装" onclick="broadcast()">
+</body>
+</html>

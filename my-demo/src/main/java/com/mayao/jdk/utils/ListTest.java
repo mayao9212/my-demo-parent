@@ -130,4 +130,21 @@ public class ListTest {
 
     }
 
+
+    /**
+     * 测试集合，遍历的时候移除，对数据的影响
+     */
+    @Test
+    public void removeWhenFor(){
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("A");
+        linkedList.add("B");
+        linkedList.add("C");
+        for (String string:linkedList){
+            if( "B".equals(string) ){
+                linkedList.remove(string);
+            }
+        }
+    }
+
 }

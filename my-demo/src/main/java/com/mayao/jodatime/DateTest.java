@@ -1,15 +1,25 @@
 package com.mayao.jodatime;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.time.FastDateFormat;
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
 import org.joda.time.LocalDate;
+import org.joda.time.Period;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 
 import java.text.DateFormat;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * function ：
@@ -63,6 +73,88 @@ public class DateTest {
 
     }
 
+    @Test
+    public void dateTimeFormateTest(){
+        String s = org.joda.time.LocalDateTime.now().minusDays(1).toString("yyyy-MM-dd");
+        System.err.println(s);
+    }
+
+    private static final String DATE_FORMATE = "yyyyMMddHHmmssSSS";
+    /**
+     * 生成商户业务流水
+     * @return
+     */
+    @Test
+    public void getOutBizNo(){
+        log.info(FastDateFormat.getInstance(DATE_FORMATE).format(new Date())+"syk");
+    }
+
+    /**
+     * 把当前时间格式为指定格式
+     */
+    @Test
+    public void test5(){
+        //获得当前时间
+        LocalDateTime ldt = LocalDateTime.now();
+        System.out.println(ldt);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH:mm:ss");
+        String format = ldt.format(dtf);
+        System.out.println(format);
+    }
+
+    /**
+     * 把指定字符串格式化为日期
+     */
+    @Test
+    public void test6(){
+        String str1="2018-07-05 12:24:12";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(str1, dtf);
+        System.out.println(localDateTime);
+
+        //to Date
+        ZoneId zoneId = ZoneId.systemDefault();
+        Instant instant = localDateTime.atZone(zoneId).toInstant();
+        Date date = Date.from(instant);
+        System.out.println("DateTest.test6:"+date);
+
+        //
+        System.out.println(parseDate(str1,"yyyy-MM-dd HH:mm:ss"));
+    }
+
+
+    public static Date parseDate(String date,String format) {
+        //时间转换
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime zdt = java.time.LocalDateTime.parse(date, DateTimeFormatter.ofPattern(format)).atZone(zoneId);
+        return Date.from(zdt.toInstant());
+    }
+
+    @Test
+    public void jsonTest(){
+        Map map = new HashMap();
+        map.put("ids",Arrays.asList(21,22));
+        map.put("feedbackRemark","test");
+        System.out.println("DateTest.jsonTest："+JSON.toJSONString(map));
+    }
+
+    @Test
+    public void expireMinutes(){
+        DateTime dateTime =  DateTime.now().plusDays(1).withHourOfDay(0).withMinuteOfHour(0).withSecondOfMinute(0);
+        System.out.println("DateTest.expireMinutes："+dateTime);
+        Interval interval = new Interval(System.currentTimeMillis(),dateTime.getMillis());
+        Period period = interval.toPeriod();
+        System.out.println("DateTest.expireMinutes："+(period.getHours()*60+period.getMinutes()+1));
+
+
+        DateTime dateTime1 = DateTime.parse("2018-12-31 12:23:45",DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
+
+        long two = dateTime1.getMillis();
+
+        long hours = (dateTime1.getMillis() - System.currentTimeMillis())/(1000*60*60);
+        System.out.println("DateTest.expireMinutes："+(hours+1));
+
+    }
 
 
 }
