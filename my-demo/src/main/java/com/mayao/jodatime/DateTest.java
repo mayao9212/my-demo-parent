@@ -157,4 +157,25 @@ public class DateTest {
     }
 
 
+    public static void main(String[] args) {
+        String start = "2019-07-20";
+        String end = "2019-07-23";
+
+        //start
+        start = start+" 00:00:00";
+        end = end+" 23:59:59";
+        //
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        org.joda.time.format.DateTimeFormatter formatter = org.joda.time.format.DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+        DateTime startDate = formatter.parseDateTime(start);
+        System.out.println(startDate.getYear());
+        System.out.println(startDate.getMonthOfYear());
+        System.out.println(startDate.getDayOfMonth());
+        System.out.println(startDate.getHourOfDay());
+        System.out.println(startDate.getMinuteOfHour());
+        System.out.println(startDate.getSecondOfMinute());
+
+    }
+
+
 }

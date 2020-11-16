@@ -4,12 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.mayao.blog.User;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * function ：反射测试
@@ -115,6 +118,44 @@ public class ReflectTest {
         }
         return false;
 
+    }
+
+
+    @Test
+    public void javaFileTest(){
+
+        String path = "C:\\Users\\tend\\Desktop\\test\\orderproductmanage\\src\\main\\java\\com\\talkingdata\\dprm\\appbuilder\\orderproductmanage\\entity\\TestContract.java";
+        File file = new File(path);
+
+        String javaName = file.getName();
+        EntityInfo entityInfo = new EntityInfo();
+        entityInfo.setJavaName(javaName);
+        System.out.println(javaName.replace(".java",""));
+        //
+        FileInputStream inputStream = null;
+        InputStreamReader inputStreamReader = null;
+        //读取文件的缓冲区
+        BufferedReader bufferedReader = null;
+        try {
+            inputStream = new FileInputStream(file);
+            inputStreamReader = new InputStreamReader(inputStream,"UTF-8");
+            bufferedReader = new BufferedReader(inputStreamReader);
+//            Map<String,String> columnTypeAndNameMap = new HashMap<>();
+            String line;
+            while ((line=bufferedReader.readLine())!=null){
+                if(StringUtils.isNotBlank(line) &&line.trim().startsWith("private")){
+                    String[] lineArray = line.trim().replace(";","").split(" ");
+                    if("org.joda.time.DateTime".equals(lineArray[1])){
+                        System.out.println("private org.joda.time.DateTime"+" "+lineArray[2]+"Start;");
+                        System.out.println("private org.joda.time.DateTime"+" "+lineArray[2]+"End;");
+                    }
+                    System.out.println(lineArray[0]+" "+lineArray[1]+" "+lineArray[2]+";");
+                }
+            }
+
+        }catch (Exception e){
+
+        }
     }
 
 
